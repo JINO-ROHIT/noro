@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "noro"
+version = "0.1.0"
+description = "Fast inference backends for generative models"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.6",
+    "diffusers>=0.41.0",
+    "transformers>=5.0.0",
+    "accelerate>=1.0",
+    "sentencepiece",
+    "protobuf",
+    "numpy",
+    "pillow",
+]
+
+[project.optional-dependencies]
+triton = ["triton>=3.2"]
+dev = ["modal>=1.0", "pytest>=8", "ruff>=0.11"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/noro"]
+
+[tool.ruff]
+line-length = 120
